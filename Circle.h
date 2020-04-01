@@ -6,7 +6,7 @@
 #define PRIMITIV_CIRCLE_H
 
 #include <GL/glut.h>
-#include "Vector2D.h"
+#include "Vector2D.cpp"
 
 class Circle
 {

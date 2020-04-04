@@ -6,7 +6,7 @@
 
 Triangle::Triangle(Vector2D A, Vector2D B, Vector2D C)
 {
-    this->A = A;
+    //this->A = A;
     this->B = B;
     this->C = C;
     red = 0.5;

@@ -11,7 +11,7 @@
 using namespace std;
 
 class Vector2D {
-protected:
+private:
     double x;   //Координата х
 
     double y;   //Координата у
@@ -39,7 +39,7 @@ public:
 
     bool operator!=(const Vector2D &v) const; //Оператор неравенства
 
-    void operator=(Vector2D v); //Оператор присвоения для векторов
+    Vector2D& operator=(Vector2D v); //Оператор присвоения для векторов
 
     void operator*=(double a);    //Присвоить значение, умноженное на число
 
@@ -54,7 +54,7 @@ public:
     Vector2D operator/(const double &a) const;    // Оператор деления вектора на число
 };
 
-Vector2D operator* (double a, const Vector2D v);    //Оператор умножения вектора на число
+Vector2D operator* (double a, Vector2D v);    //Оператор умножения вектора на число
 
 ostream& operator<<(ostream& os, const Vector2D& v);    //Вывод вектора в поток
 

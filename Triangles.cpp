@@ -6,7 +6,7 @@
 
 Triangle::Triangle(Vector2D A, Vector2D B, Vector2D C)
 {
-    //this->A = A;
+    this->A = A;
     this->B = B;
     this->C = C;
     red = 0.5;
@@ -34,6 +34,16 @@ Triangle::~Triangle()
     green = 0.8;
     blue = 0.5;
 };
+
+Triangle::Triangle()
+{
+    this->A = Vector2D(0, 0);
+    this->B = Vector2D(0, 0);
+    this->C = Vector2D(0, 0);
+    red = 0.5;
+    green = 0.8;
+    blue = 0.5;
+}
 
 void Triangle::setColor(double red, double green, double blue)
 {
@@ -76,7 +86,7 @@ void Triangle::paintPolygon()
     glEnd();
 };
 
-void Triangle::changeSIze(double N)
+void Triangle::changeSize(double N)
 {
     A *= N;
     B *= N;

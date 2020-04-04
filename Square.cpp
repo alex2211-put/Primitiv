@@ -6,10 +6,20 @@
 
 Square::Square()
 {
+    Vector2D s = Vector2D();
+    this->A = s;
+    this->B = Vector2D(0, 0);
+    this->C = Vector2D(0, 0);
+    red = 0.5;
+    green = 0.8;
+    blue = 0.5;
+}
+
+Square::~Square()
+{
     this->A = Vector2D(0, 0);
     this->B = Vector2D(0, 0);
     this->C = Vector2D(0, 0);
-    this->D = Vector2D(0, 0);
     red = 0.5;
     green = 0.8;
     blue = 0.5;
@@ -42,10 +52,10 @@ Square::Square(Vector2D A, Vector2D C)
 {
     this->A = A;
     this->C = C;
-    Vector2D O = (A + C) / 2;
-    Vector2D n = Vector2D(-(O - A).getX(), (O - A).getY());
-    this->D = O + n;
-    this->B = O - n;
+    Vector2D O = (C - A) / 2;
+    Vector2D n = Vector2D(-(O).getY(), (O).getX());
+    this->D = A + O + n;
+    this->B = A + O - n;
 
     red = 0.5;
     green = 0.8;
@@ -56,8 +66,8 @@ Square::Square(Vector2D A, Vector2D C, double red, double green, double blue)
 {
     this->A = A;
     this->C = C;
-    Vector2D O = (A + C) / 2;
-    Vector2D n = Vector2D(-(O - A).getX(), (O - A).getY());
+    Vector2D O = (C - A) / 2;
+    Vector2D n = Vector2D((O).getY(), -(O).getX());
     this->D = O + n;
     this->B = O - n;
 
@@ -73,7 +83,7 @@ void Square::setColor(double red, double green, double blue)
     this->blue = blue;
 }
 
-void Square::changeSIze(double N)
+void Square::changeSize(double N)
 {
     A *= N;
     B *= N;

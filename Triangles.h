@@ -6,18 +6,15 @@
 #define PRIMITIV_TRIANGLES_H
 
 #include <GL/glut.h>
-#include "Vector2D.cpp"
+#include "Primitiv.h"
 
-class Triangle
+class Triangle : private Primitiv
 {
 private:
     Vector2D A;
     Vector2D B;
     Vector2D C;
 
-    double red;
-    double green;
-    double blue;
 public:
     Triangle(Vector2D A, Vector2D B, Vector2D C);
 
@@ -27,21 +24,21 @@ public:
 
     ~Triangle();
 
-    void setColor(double red, double green, double blue);
+    void paintLines() override;
 
-    void paintLines();
+    void paintPolygon() override;
 
-    void paintPolygon();
+    void changeSize(double N) override;
 
-    void changeSIze(double N);
+    void changePositionUp(double up) override;
 
-    void changePositionUp(double up);
+    void changePositionDown(double down) override;
 
-    void changePositionDown(double down);
+    void changePositionLeft(double left) override;
 
-    void changePositionLeft(double left);
+    void changePositionRight(double right) override;
 
-    void changePositionRight(double right);
+    void setColor(double red, double green, double blue) override;
 };
 
 

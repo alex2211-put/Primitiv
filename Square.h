@@ -6,9 +6,9 @@
 #define PRIMITIV_SQUARE_H
 
 #include <GL/glut.h>
-#include "Vector2D.cpp"
+#include "Primitiv.h"
 
-class Square
+class Square : private Primitiv
 {
 private:
     Vector2D A;
@@ -16,9 +16,6 @@ private:
     Vector2D C;
     Vector2D D;
 
-    double red;
-    double green;
-    double blue;
 public:
     Square(Vector2D A, Vector2D B, Vector2D C, Vector2D D);
 
@@ -30,21 +27,23 @@ public:
 
     Square();
 
-    void setColor(double red, double green, double blue);
+    ~Square();
 
-    void paintLines();
+    void setColor(double red, double green, double blue) override;
 
-    void paintPolygon();
+    void paintLines() override;
 
-    void changeSIze(double N);
+    void paintPolygon() override;
 
-    void changePositionUp(double up);
+    void changeSize(double N) override;
 
-    void changePositionDown(double down);
+    void changePositionUp(double up) override;
 
-    void changePositionLeft(double left);
+    void changePositionDown(double down) override;
 
-    void changePositionRight(double right);
+    void changePositionLeft(double left) override;
+
+    void changePositionRight(double right) override;
 };
 
 

@@ -6,17 +6,13 @@
 #define PRIMITIV_CIRCLE_H
 
 #include <GL/glut.h>
-#include "Vector2D.cpp"
 
-class Circle
+class Circle : private Primitiv
 {
 private:
     Vector2D A;
     double radius;
 
-    double red;
-    double green;
-    double blue;
 public:
     Circle(Vector2D A, double radius);
 
@@ -24,23 +20,23 @@ public:
 
     Circle(Vector2D A, double radius, double red, double green, double blue);
 
-    void setColor(double red, double green, double blue);
+    void setColor(double red, double green, double blue) override;
 
-    void changeSize(double N);
+    void changeSize(double N) override;
 
     void changeRadius(double radius);
 
-    void changePositionUp(double up);
+    void changePositionUp(double up) override;
 
-    void changePositionDown(double down);
+    void changePositionDown(double down) override;
 
-    void changePositionLeft(double left);
+    void changePositionLeft(double left) override;
 
-    void changePositionRight(double right);
+    void changePositionRight(double right) override;
 
-    void paintLine();
+    void paintLines() override;
 
-    void paintPolygon();
+    void paintPolygon() override;
 };
 
 

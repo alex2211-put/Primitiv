@@ -71,7 +71,7 @@ void Circle::changePositionRight(double right)
     A.setX(A.getX() + right);
 }
 
-void Circle::paintLine()
+void Circle::paintLines()
 {
     glBegin(GL_LINE_LOOP);
     for (int i = 0; i < 50; i++)

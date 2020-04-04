@@ -3,9 +3,11 @@
 //
 
 #include "Vector2D.h"
-using namespace std;
 
-Vector2D::Vector2D(): Vector2D(0, 0) {};
+Vector2D::Vector2D(){
+this->x = 0;
+this->y = 0;
+};
 
 Vector2D::Vector2D(double x, double y)
 {
@@ -53,9 +55,10 @@ bool Vector2D::operator!=(const Vector2D &v) const {
     return !(*this == v);
 }
 
-void Vector2D::operator=(Vector2D v) {
+Vector2D& Vector2D::operator=(Vector2D v) {
     x = v.getX();
     y = v.getY();
+    return *this;
 }
 
 Vector2D Vector2D::operator+(const Vector2D &v) const {

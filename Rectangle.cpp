@@ -46,7 +46,7 @@ void Rectangle::setColor(double red, double green, double blue)
     this->blue = blue;
 }
 
-void Rectangle::changeSIze(double N)
+void Rectangle::changeSize(double N)
 {
     A *= N;
     B *= N;

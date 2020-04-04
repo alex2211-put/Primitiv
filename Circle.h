@@ -10,33 +10,33 @@
 class Circle : private Primitiv
 {
 private:
-    Vector2D A;
-    double radius;
+    Vector2D A;  // центр окружности (круга)
+    double radius;  // радиус круга
 
 public:
-    Circle(Vector2D A, double radius);
+    Circle(Vector2D A, double radius);  // конструктор круга по радиусу и центру
 
-    Circle();
+    Circle();  // конструктор круга (координаты (0, 0), радиус 0)
 
-    Circle(Vector2D A, double radius, double red, double green, double blue);
+    Circle(Vector2D A, double radius, double red, double green, double blue);  //конструктор по центру, радиусу и цвету
 
-    void setColor(double red, double green, double blue) override;
+    void setColor(double red, double green, double blue) override;  // меняем цвет кругу
 
-    void changeSize(double N) override;
+    void changeSize(double N) override;  // изменить размер круга в N раз (увеличить), чтобы уменьшить - дробное число
 
-    void changeRadius(double radius);
+    void changeRadius(double radius);  // изменить радиус
 
-    void changePositionUp(double up) override;
+    void changePositionUp(double up) override;  // движение вверх
 
-    void changePositionDown(double down) override;
+    void changePositionDown(double down) override;  // движение виз
 
-    void changePositionLeft(double left) override;
+    void changePositionLeft(double left) override;  // движение влево
 
-    void changePositionRight(double right) override;
+    void changePositionRight(double right) override;  // движение вправо
 
-    void paintLines() override;
+    void paintLines() override;  // рисуем окружность
 
-    void paintPolygon() override;
+    void paintPolygon() override;  // рисуем круг
 };
 
 

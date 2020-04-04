@@ -76,7 +76,7 @@ void Circle::paintLines()
     glBegin(GL_LINE_LOOP);
     for (int i = 0; i < 50; i++)
     {
-        double angle = 2.0 * 3.1415926 * double (i) / 50;
+        double angle = 2.0 * 3.1415926 * double(i) / 50;
         double dx = radius * cosf(angle);
         double dy = radius * sinf(angle);
         glVertex2f(this->A.getX() + dx, this->A.getY() + dy);
@@ -89,7 +89,7 @@ void Circle::paintPolygon()
     glBegin(GL_POLYGON);
     for (int i = 0; i < 50; i++)
     {
-        double angle = 2.0 * 3.1415926 * double (i) / 50;
+        double angle = 2.0 * 3.1415926 * double(i) / 50;
         double dx = radius * cosf(angle);
         double dy = radius * sinf(angle);
         glVertex2f(this->A.getX() + dx, this->A.getY() + dy);

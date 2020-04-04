@@ -6,33 +6,37 @@
 #define PRIMITIV_SPRING_H
 
 #include <GL/glut.h>
-#include "Vector2D.cpp"
 
-class Spring
+class Spring  // не наследуется от примитива, потому что немного другое построение
 {
 private:
-    Vector2D A;
-    Vector2D B;
-    double width;
-    int quantity;
-
-    double red;
-    double green;
-    double blue;
+    Vector2D A;  // координаты одного конца пружины
+    Vector2D B;  // координаты второго конца пружины          /\    /\    /\      -|
+    double width;  // ширина пружины      ------------>  -\  /  \  /  \  /  \-     } вот эта величина искомая ширина пружины
+    int quantity;  // количество зубчиков                  \/    \/    \/         _|
+    //                                     |_____________________|
+    //                                       вот количество зубцов
+    double red;  // красный цвет
+    double green;  // зеленый цвет
+    double blue;  // голубой цвет
 public:
-    Spring(Vector2D A, Vector2D B, double width, int quantity);
+    Spring(Vector2D A, Vector2D B, double width,
+           int quantity);  // конструктор с началом прцжины, концом, шириной и количеством зубчиков
 
-    Spring();
+    Spring();  // по умолчанию все по 0
 
-    Spring(Vector2D A, Vector2D B, double width, int quantity, double red, double green, double blue);
+    Spring(Vector2D A, Vector2D B, double width, int quantity, double red, double green,
+           double blue);  // также с цветом
 
-    void setColor(double red, double green, double blue);
+    void setColor(double red, double green, double blue);  // установить цвет
 
-    void changeA(Vector2D A);
+    void changeA(Vector2D A);  // изменить место крепления пружины (1 конец)
 
-    void changeB(Vector2D B);
+    void changeB(Vector2D B);  // изменить второй конец пружины
 
-    void paint();
+    void paintGorisont();  // рисование пружины горизонтально
+
+    void paintVertic(); // рисование пружины вертикально
 };
 
 

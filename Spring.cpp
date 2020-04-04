@@ -18,8 +18,8 @@ Spring::Spring()
 
 Spring::Spring(Vector2D A, Vector2D B, double width, int quantity)
 {
-    this->A = Vector2D(0, 0);
-    this->B = Vector2D(0, 0);
+    this->A = A;
+    this->B = B;
     this->width = width;
     this->quantity = quantity;
 
@@ -57,12 +57,12 @@ void Spring::changeB(Vector2D B)
     this->B = B;
 }
 
-void Spring::paint()
+void Spring::paintGorisont()
 {
     Vector2D O = A;
     int i = 0;
-    bool down = true;
-    while (i < quantity)
+    bool down = false;
+    while (i < quantity * 2 + 1)
     {
         if (i == 0)
         {
@@ -70,18 +70,21 @@ void Spring::paint()
             glColor3f(red, green, blue);
             glVertex2f(O.getX(), O.getY());
             glColor3f(red, green, blue);
-            glVertex2f(O.getX() + (B - A).length() / (quantity * 2 + 2), O.getY() + width / 2);
+            glVertex2f(O.getX() + (B - A).length() / (quantity * 4 + 2), O.getY() + width / 2);
             glEnd();
-            O = Vector2D(O.getX() + (B - A).length() / (quantity * 2 + 2), O.getY() + width / 2);
-        } else if (i == quantity - 1)
+            O = Vector2D(O.getX() + (B - A).length() / (quantity * 4 + 2), O.getY() + width / 2);
+        } else if (i == quantity * 2)
         {
+
             glBegin(GL_LINES);
             glColor3f(red, green, blue);
             glVertex2f(O.getX(), O.getY());
             glColor3f(red, green, blue);
-            glVertex2f(O.getX() + (B - A).length() / (quantity * 2 + 2), O.getY() - width / 2);
+            if (down)
+                glVertex2f(O.getX() + (B - A).length() / (quantity * 4 + 2), O.getY() - width / 2);
+            else
+                glVertex2f(O.getX() + (B - A).length() / (quantity * 4 + 2), O.getY() + width / 2);
             glEnd();
-            O = Vector2D(O.getX() + (B - A).length() / (quantity * 2 + 2), O.getY() - width / 2);
         } else
         {
             if (down)
@@ -90,9 +93,9 @@ void Spring::paint()
                 glColor3f(red, green, blue);
                 glVertex2f(O.getX(), O.getY());
                 glColor3f(red, green, blue);
-                glVertex2f(O.getX() + (B - A).length() / (quantity + 1), O.getY() - width);
+                glVertex2f(O.getX() + (B - A).length() / (quantity * 2 + 1), O.getY() - width);
                 glEnd();
-                O = Vector2D(O.getX() + (B - A).length() / (quantity + 1), O.getY() - width);
+                O = Vector2D(O.getX() + (B - A).length() / (quantity * 2 + 1), O.getY() - width);
             } else
             {
                 {
@@ -100,10 +103,67 @@ void Spring::paint()
                     glColor3f(red, green, blue);
                     glVertex2f(O.getX(), O.getY());
                     glColor3f(red, green, blue);
-                    glVertex2f(O.getX() + (B - A).length() / (quantity + 2), O.getY() + width / 2);
+                    glVertex2f(O.getX() + (B - A).length() / (quantity * 2 + 2), O.getY() + width);
                     glEnd();
                 }
-                O = Vector2D(O.getX() + (B - A).length() / (quantity + 2), O.getY() + width / 2);
+                O = Vector2D(O.getX() + (B - A).length() / (quantity * 2 + 2), O.getY() + width);
+            }
+        }
+        i++;
+        down = !down;
+    }
+}
+
+void Spring::paintVertic()
+{
+    Vector2D O = A;
+    int i = 0;
+    bool down = false;
+    while (i < quantity * 2 + 1)
+    {
+        if (i == 0)
+        {
+            glBegin(GL_LINES);
+            glColor3f(red, green, blue);
+            glVertex2f(O.getX(), O.getY());
+            glColor3f(red, green, blue);
+            glVertex2f(O.getX() + width / 2, O.getY() + (B - A).length() / (quantity * 4 + 2));
+            glEnd();
+            O = Vector2D(O.getX() + width / 2, O.getY() + (B - A).length() / (quantity * 4 + 2));
+        } else if (i == quantity * 2)
+        {
+
+            glBegin(GL_LINES);
+            glColor3f(red, green, blue);
+            glVertex2f(O.getX(), O.getY());
+            glColor3f(red, green, blue);
+            if (down)
+                glVertex2f(O.getX() - width / 2, O.getY() + (B - A).length() / (quantity * 4 + 2));
+            else
+                glVertex2f(O.getX() + width / 2, O.getY() + (B - A).length() / (quantity * 4 + 2));
+            glEnd();
+        } else
+        {
+            if (down)
+            {
+                glBegin(GL_LINES);
+                glColor3f(red, green, blue);
+                glVertex2f(O.getX(), O.getY());
+                glColor3f(red, green, blue);
+                glVertex2f(O.getX() - width, O.getY() + (B - A).length() / (quantity * 2 + 1));
+                glEnd();
+                O = Vector2D(O.getX() - width, O.getY() + (B - A).length() / (quantity * 2 + 1));
+            } else
+            {
+                {
+                    glBegin(GL_LINES);
+                    glColor3f(red, green, blue);
+                    glVertex2f(O.getX(), O.getY());
+                    glColor3f(red, green, blue);
+                    glVertex2f(O.getX() + width, O.getY() + (B - A).length() / (quantity * 2 + 2));
+                    glEnd();
+                }
+                O = Vector2D(O.getX() + width, O.getY() + (B - A).length() / (quantity * 2 + 2));
             }
         }
         i++;

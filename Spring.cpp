@@ -30,8 +30,8 @@ Spring::Spring(Vector2D A, Vector2D B, double width, int quantity)
 
 Spring::Spring(Vector2D A, Vector2D B, double width, int quantity, double red, double green, double blue)
 {
-    this->A = Vector2D(0, 0);
-    this->B = Vector2D(0, 0);
+    this->A = A;
+    this->B = B;
     this->width = width;
     this->quantity = quantity;
 
